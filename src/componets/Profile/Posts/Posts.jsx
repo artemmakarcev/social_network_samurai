@@ -1,18 +1,24 @@
 import React from "react";
 import styles from "./Posts.module.css";
-import Post from './Post/Post'
+import Post from "./Post/Post";
 
-const Posts = () => {
+const Posts = (props) => {
+  let postsElements = props.posts.map(({ id, title, src, likesCount }) => {
+    return <Post key={id} title={title} src={src} likesCount={likesCount} />;
+  });
+
   return (
-    <div>
-      My post
-      <div>New post</div>
-      <div className={styles.posts}>
-        <Post title='Post1' src='https://randomuser.me/api/portraits/men/1.jpg'/>
-        <Post title='Post2' src='https://randomuser.me/api/portraits/men/1.jpg'/>
-        <Post title='Post3' src='https://randomuser.me/api/portraits/men/1.jpg'/>
-        <Post title='Post4' src='https://randomuser.me/api/portraits/men/1.jpg'/>
+    <div className={styles.postsBlock}>
+      <h3> My post</h3>
+      <div>
+        <div>
+          <textarea defaultValue="New post" />
+        </div>
+        <div>
+          <button>Add post</button>
+        </div>
       </div>
+      <div className={styles.posts}>{postsElements}</div>
     </div>
   );
 };

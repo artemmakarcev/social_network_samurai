@@ -10,7 +10,7 @@ import News from "./componets/News/News";
 import Music from "./componets/Music/Music";
 import Settings from "./componets/Settings/Settings";
 
-function App() {
+function App(props) {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
@@ -18,8 +18,9 @@ function App() {
         <Navbar />
         <div className="app-wrapper-content">
           <Routes>
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/dialogs" element={<Dialogs />} />
+            <Route path="/profile" element={<Profile posts={props.posts} />} />
+            <Route path="/dialogs" element={<Dialogs dialogs={props.dialogs} messages={props.messages} />} />
+            {/* exact - точное совпадение. React Router v6 <Route path="/messages/*" element={<Messages/>} /> */}
             <Route path="/news" element={<News />} />
             <Route path="/music" element={<Music />} />
             <Route path="/settings" element={<Settings />} />

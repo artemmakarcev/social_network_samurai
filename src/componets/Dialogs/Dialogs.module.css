@@ -3,3 +3,28 @@
     background-color: aqua;
   }
    */
+.dialogs {
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+}
+
+.dialogs-items {
+  padding: 10px;
+
+}
+
+.dialogs-items .active {
+  color: gold;
+}
+
+.dialog {
+  color: white;
+}
+
+.messages {
+  padding: 10px;
+}
+
+.message {
+  color: white;
+}

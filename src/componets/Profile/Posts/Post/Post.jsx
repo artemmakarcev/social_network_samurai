@@ -3,11 +3,11 @@ import styles from "./Post.module.css";
 
 const Post = (props) => {
   return (
-    <div className={styles.item}>
+    <div id={props.id} className={styles.item}>
       <img src={props.src} alt="avatar" />
       {props.title}
       <div>
-        <span>like</span>
+        <span>like {props.likesCount} </span>
         <span>dislike</span>
       </div>
     </div>
