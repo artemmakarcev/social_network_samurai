@@ -9,6 +9,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import News from "./componets/News/News";
 import Music from "./componets/Music/Music";
 import Settings from "./componets/Settings/Settings";
+import Friends from "./componets/Friends/Friends";
 
 function App(props) {
   return (
@@ -18,12 +19,13 @@ function App(props) {
         <Navbar />
         <div className="app-wrapper-content">
           <Routes>
-            <Route path="/profile" element={<Profile posts={props.posts} />} />
-            <Route path="/dialogs" element={<Dialogs dialogs={props.dialogs} messages={props.messages} />} />
+            <Route path="/profile" element={<Profile state={props.state.profilePage} />} />
+            <Route path="/dialogs" element={<Dialogs state={props.state.dialogsPage} />} />
             {/* exact - точное совпадение. React Router v6 <Route path="/messages/*" element={<Messages/>} /> */}
             <Route path="/news" element={<News />} />
             <Route path="/music" element={<Music />} />
             <Route path="/settings" element={<Settings />} />
+            <Route path="/friends" element={<Friends />} />
           </Routes>
         </div>
       </div>
