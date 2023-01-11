@@ -1,10 +1,12 @@
+import { rerenderEntireTree } from "../render";
+
 let state = {
   profilePage: {
     posts: [
-      { id: 1, titel: "Post1", src: "https://randomuser.me/api/portraits/men/1.jpg", likesCount: 11 },
-      { id: 2, titel: "Post2", src: "https://randomuser.me/api/portraits/men/2.jpg", likesCount: 11 },
-      { id: 3, titel: "Post3", src: "https://randomuser.me/api/portraits/men/3.jpg", likesCount: 11 },
-      { id: 4, titel: "Post4", src: "https://randomuser.me/api/portraits/men/4.jpg", likesCount: 11 },
+      { id: 1, title: "Post1", src: "https://randomuser.me/api/portraits/men/1.jpg", likesCount: 11 },
+      { id: 2, title: "Post2", src: "https://randomuser.me/api/portraits/men/2.jpg", likesCount: 11 },
+      { id: 3, title: "Post3", src: "https://randomuser.me/api/portraits/men/3.jpg", likesCount: 11 },
+      { id: 4, title: "Post4", src: "https://randomuser.me/api/portraits/men/4.jpg", likesCount: 11 },
     ],
   },
   dialogsPage: {
@@ -24,6 +26,18 @@ let state = {
     ],
   },
   siderbar: {},
+};
+
+export let addPost = (postTitle) => {
+  let nextId = state.profilePage.posts.length+1;
+  let newPost = {
+    id: nextId,
+    title: postTitle,
+    likesCount: 4,
+    src: "https://randomuser.me/api/portraits/men/"+nextId+".jpg",
+  };
+  state.profilePage.posts.push(newPost);
+  rerenderEntireTree(state);
 };
 
 export default state;

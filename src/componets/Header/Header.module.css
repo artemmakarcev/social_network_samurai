@@ -3,6 +3,7 @@
     background-color: green;
   }
   .header img {
-    height: 10vmin;
+    width: 64px;
+    height: auto;
     pointer-events: none;
   }

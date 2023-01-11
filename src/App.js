@@ -19,7 +19,7 @@ function App(props) {
         <Navbar />
         <div className="app-wrapper-content">
           <Routes>
-            <Route path="/profile" element={<Profile state={props.state.profilePage} />} />
+            <Route path="/profile" element={<Profile state={props.state.profilePage} addPost={props.addPost}/>} />
             <Route path="/dialogs" element={<Dialogs state={props.state.dialogsPage} />} />
             {/* exact - точное совпадение. React Router v6 <Route path="/messages/*" element={<Messages/>} /> */}
             <Route path="/news" element={<News />} />
