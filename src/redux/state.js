@@ -8,6 +8,7 @@ let state = {
       { id: 3, title: "Post3", src: "https://randomuser.me/api/portraits/men/3.jpg", likesCount: 11 },
       { id: 4, title: "Post4", src: "https://randomuser.me/api/portraits/men/4.jpg", likesCount: 11 },
     ],
+    newPostText: "new post text",
   },
   dialogsPage: {
     dialogs: [
@@ -28,15 +29,21 @@ let state = {
   siderbar: {},
 };
 
-export let addPost = (postTitle) => {
-  let nextId = state.profilePage.posts.length+1;
+export let addPost = () => {
+  let nextId = state.profilePage.posts.length + 1;
   let newPost = {
     id: nextId,
-    title: postTitle,
+    title: state.profilePage.newPostText,
     likesCount: 4,
-    src: "https://randomuser.me/api/portraits/men/"+nextId+".jpg",
+    src: "https://randomuser.me/api/portraits/men/" + nextId + ".jpg",
   };
   state.profilePage.posts.push(newPost);
+  state.profilePage.newPostText = "";
+  rerenderEntireTree(state);
+};
+
+export let updateNewPostText = (newText) => {
+  state.profilePage.newPostText = newText;
   rerenderEntireTree(state);
 };
 
