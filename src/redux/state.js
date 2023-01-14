@@ -1,4 +1,6 @@
-import { rerenderEntireTree } from "../render";
+let rerenderEntireTree = () => {
+  console.log("State changed");
+};
 
 let state = {
   profilePage: {
@@ -28,8 +30,11 @@ let state = {
   },
   siderbar: {},
 };
-
-export let addPost = () => {
+/**
+ * Добовляет новый пост в state
+ * @param  {Object} state
+ */
+export const addPost = () => {
   let nextId = state.profilePage.posts.length + 1;
   let newPost = {
     id: nextId,
@@ -41,10 +46,17 @@ export let addPost = () => {
   state.profilePage.newPostText = "";
   rerenderEntireTree(state);
 };
-
-export let updateNewPostText = (newText) => {
+/**
+ * Изменяет значение для названия нового поста
+ * @param  {String} newText
+ */
+export const updateNewPostText = (newText) => {
   state.profilePage.newPostText = newText;
   rerenderEntireTree(state);
+};
+
+export const subscribe = (observer) => {
+  rerenderEntireTree = observer; // Паттер обсервера. Похоже на addEventListener
 };
 
 export default state;
