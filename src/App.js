@@ -20,7 +20,7 @@ function App(props) {
         <div className="app-wrapper-content">
           <Routes>
             <Route path="/profile" element={<Profile profilePage={props.state.profilePage} dispatch={props.dispatch} />} />
-            <Route path="/dialogs" element={<Dialogs state={props.state.dialogsPage} />} />
+            <Route path="/dialogs" element={<Dialogs store={props.store} />} />
             {/* exact - точное совпадение. React Router v6 <Route path="/messages/*" element={<Messages/>} /> */}
             <Route path="/news" element={<News />} />
             <Route path="/music" element={<Music />} />

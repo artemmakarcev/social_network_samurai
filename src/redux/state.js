@@ -1,3 +1,8 @@
+const ADD_POST = "ADD-POST";
+const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST";
+const SEND_MESSAGE = "SEND-MESSAGE";
+const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE";
+
 let store = {
   _state: {
     profilePage: {
@@ -24,6 +29,7 @@ let store = {
         { id: 4, text: "Vel explicabo qui et animi ex." },
         { id: 5, text: "Reprehenderit est dolorem dolorem nostrum qui." },
       ],
+      newMessageText: "",
     },
     siderbar: {},
   },
@@ -58,7 +64,7 @@ let store = {
     this._callSubscriber(this._state);
   },
   dispatch(action) {
-    if (action.type === "ADD-POST") {
+    if (action.type === ADD_POST) {
       let nextId = this._state.profilePage.posts.length + 1;
       let newPost = {
         id: nextId,
@@ -69,14 +75,43 @@ let store = {
       this._state.profilePage.posts.push(newPost);
       this._state.profilePage.newPostText = "";
       this._callSubscriber(this._state);
-    } else if (action.type === "UPDATE-NEW-POST") {
+    } else if (action.type === UPDATE_NEW_POST_TEXT) {
       this._state.profilePage.newPostText = action.newText;
+      this._callSubscriber(this._state);
+    } else if (action.type === SEND_MESSAGE) {
+      let nextId = this._state.dialogsPage.messages.length + 1;
+      let newMessage = {
+        id: nextId,
+        text: this._state.dialogsPage.newMessageText,
+      };
+      this._state.dialogsPage.messages.push(newMessage);
+      this._state.dialogsPage.newMessageText = "";
+      this._callSubscriber(this._state);
+    } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
+      this._state.dialogsPage.newMessageText = action.newText;
       this._callSubscriber(this._state);
     }
   },
+
   subscribe(observer) {
     this._callSubscriber = observer; // Паттер обсервера. Похоже на addEventListener
   },
 };
+export const addPostActionCreator = () => {
+  return { type: ADD_POST };
+};
 
+export const updatwNewPostTextActionCreator = (text) => {
+  return { type: UPDATE_NEW_POST_TEXT, newText: text };
+};
+
+export const sendMessageActionCreator = () => {
+  return {
+    type: SEND_MESSAGE,
+  };
+};
+
+export const updateNewMessageTextActionCreator = (text) => {
+  return { type: UPDATE_NEW_MESSAGE_TEXT, newText: text };
+};
 export default store;
