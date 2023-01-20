@@ -1,3 +1,7 @@
+/* 
+Используется для примера строения store
+*/
+
 import dialogsReducer from "./dialogsReducer";
 import profileReducer from "./profileReducer";
 import sidebarReducer from "./sidebarReducer";
