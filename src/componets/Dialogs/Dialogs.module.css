@@ -10,7 +10,6 @@
 
 .dialogs-items {
   padding: 10px;
-
 }
 
 .dialogs-items .active {
@@ -26,5 +25,9 @@
 }
 
 .message {
-  color: white;
+  padding: 3px;
+  margin: 2px;
+  color: black;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
