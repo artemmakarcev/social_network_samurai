@@ -10,6 +10,7 @@ import News from "./componets/News/News";
 import Music from "./componets/Music/Music";
 import Settings from "./componets/Settings/Settings";
 import Friends from "./componets/Friends/Friends";
+import DialogsContainer from "./componets/Dialogs/DialogsContainer";
 
 function App(props) {
   return (
@@ -19,8 +20,8 @@ function App(props) {
         <Navbar />
         <div className="app-wrapper-content">
           <Routes>
-            <Route path="/profile" element={<Profile profilePage={props.state.profilePage} dispatch={props.dispatch} />} />
-            <Route path="/dialogs" element={<Dialogs store={props.store} />} />
+            <Route path="/profile" element={<Profile store={props.store} />} />
+            <Route path="/dialogs" element={<DialogsContainer store={props.store} />} />
             {/* exact - точное совпадение. React Router v6 <Route path="/messages/*" element={<Messages/>} /> */}
             <Route path="/news" element={<News />} />
             <Route path="/music" element={<Music />} />
