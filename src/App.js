@@ -4,7 +4,6 @@ import "./App.css";
 import Header from "./componets/Header/Header";
 import Navbar from "./componets/Navbar/Navbar";
 import Profile from "./componets/Profile/Profile";
-import Dialogs from "./componets/Dialogs/Dialogs";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import News from "./componets/News/News";
 import Music from "./componets/Music/Music";
@@ -20,8 +19,8 @@ function App(props) {
         <Navbar />
         <div className="app-wrapper-content">
           <Routes>
-            <Route path="/profile" element={<Profile store={props.store} />} />
-            <Route path="/dialogs" element={<DialogsContainer store={props.store} />} />
+            <Route path="/profile" element={<Profile  />} />
+            <Route path="/dialogs" element={<DialogsContainer/>} />
             {/* exact - точное совпадение. React Router v6 <Route path="/messages/*" element={<Messages/>} /> */}
             <Route path="/news" element={<News />} />
             <Route path="/music" element={<Music />} />
