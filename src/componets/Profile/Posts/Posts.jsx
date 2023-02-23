@@ -3,7 +3,7 @@ import styles from "./Posts.module.css";
 import Post from "./Post/Post";
 
 const Posts = (props) => {
-  let postsElements = props.profilePage.posts.map(({ id, title, src, likesCount }) => {
+  let postsElements = props.posts.map(({ id, title, src, likesCount }) => {
     return <Post key={id} title={title} src={src} likesCount={likesCount} />;
   });
 

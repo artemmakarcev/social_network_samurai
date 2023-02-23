@@ -13,8 +13,8 @@ const Dialogs = (props) => {
     props.updateNewMessageText(text);
   };
 
-  let dialogsElements = props.dialogsPage.dialogs.map((dialog) => <DialogItem name={dialog.name} key={dialog.id} />);
-  let messagesElements = props.dialogsPage.messages.map((message) => <Message text={message.text} key={message.id} />);
+  let dialogsElements = props.dialogs.map((dialog) => <DialogItem name={dialog.name} key={dialog.id}  id={dialog.id}/>);
+  let messagesElements = props.messages.map((message) => <Message text={message.text} key={message.id} id={message.id}/>);
 
   return (
     <div className={styles.dialogs}>
