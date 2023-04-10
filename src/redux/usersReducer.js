@@ -3,15 +3,7 @@ const UNFOLLOW_USER = "UNFOLLOW_USER";
 const SET_USER = "SET_USER";
 
 let initialState = {
-  users: [      {
-    id: 1,
-    photoUrl:
-      "https://steamuserimages-a.akamaihd.net/ugc/5098669332654194970/A1F0504837E6CDA815E1DCB682F8F3960E12333C/?imw=128&imh=128&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true",
-    fulName: "Name",
-    location: { city: "Moscow", country: "Russia" },
-    status: "status string",
-    isFollow: false,
-  },],
+  users: [],
 };
 
 const usersReducer = (state = initialState, action) => {
