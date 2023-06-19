@@ -1,0 +1,116 @@
+{
+  "items": [
+    {
+      "name": "__benjamin__",
+      "id": 29149,
+      "uniqueUrlName": null,
+      "photos": {
+        "small": null,
+        "large": null
+      },
+      "status": null,
+      "followed": false
+    },
+    {
+      "name": "benjamin02",
+      "id": 29148,
+      "uniqueUrlName": null,
+      "photos": {
+        "small": null,
+        "large": null
+      },
+      "status": null,
+      "followed": false
+    },
+    {
+      "name": "benjamin",
+      "id": 29147,
+      "uniqueUrlName": null,
+      "photos": {
+        "small": null,
+        "large": null
+      },
+      "status": null,
+      "followed": false
+    },
+    {
+      "name": "AnnaD",
+      "id": 29146,
+      "uniqueUrlName": null,
+      "photos": {
+        "small": "https://social-network.samuraijs.com/activecontent/images/users/29146/user-small.jpg?v=1",
+        "large": "https://social-network.samuraijs.com/activecontent/images/users/29146/user.jpg?v=1"
+      },
+      "status": null,
+      "followed": false
+    },
+    {
+      "name": "busterkeaton",
+      "id": 29145,
+      "uniqueUrlName": null,
+      "photos": {
+        "small": null,
+        "large": null
+      },
+      "status": null,
+      "followed": false
+    },
+    {
+      "name": "PeterKalmik",
+      "id": 29144,
+      "uniqueUrlName": null,
+      "photos": {
+        "small": null,
+        "large": null
+      },
+      "status": null,
+      "followed": false
+    },
+    {
+      "name": "PeterFinagin",
+      "id": 29143,
+      "uniqueUrlName": null,
+      "photos": {
+        "small": null,
+        "large": null
+      },
+      "status": null,
+      "followed": false
+    },
+    {
+      "name": "PeterFin",
+      "id": 29142,
+      "uniqueUrlName": null,
+      "photos": {
+        "small": null,
+        "large": null
+      },
+      "status": null,
+      "followed": false
+    },
+    {
+      "name": "lukashkov",
+      "id": 29141,
+      "uniqueUrlName": null,
+      "photos": {
+        "small": null,
+        "large": null
+      },
+      "status": null,
+      "followed": false
+    },
+    {
+      "name": "iliabarabanov",
+      "id": 29140,
+      "uniqueUrlName": null,
+      "photos": {
+        "small": null,
+        "large": null
+      },
+      "status": null,
+      "followed": false
+    }
+  ],
+  "totalCount": 24157,
+  "error": null
+}
