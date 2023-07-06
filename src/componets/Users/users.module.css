@@ -1,7 +1,18 @@
-.userPhoto {
-  width: 100px;
+.selectedPage {
+  font-size: 120%;
+  font-weight: bold;
 }
 
-.selectedPage {
-  font-weight: bold;
+.userList {
+  list-style: none;
+  padding: 0;
+}
+
+.userList li {
+  display: inline;
+  padding: 4px;
+}
+
+.userList li a {
+  text-decoration: none;
 }

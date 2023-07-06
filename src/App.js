@@ -3,7 +3,6 @@ import "./App.css";
 
 import Header from "./componets/Header/Header";
 import Navbar from "./componets/Navbar/Navbar";
-import Profile from "./componets/Profile/Profile";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import News from "./componets/News/News";
 import Music from "./componets/Music/Music";
@@ -11,6 +10,7 @@ import Settings from "./componets/Settings/Settings";
 import Friends from "./componets/Friends/Friends";
 import DialogsContainer from "./componets/Dialogs/DialogsContainer";
 import UsersContainer from "./componets/Users/UsersContainer";
+import ProfileContainer from "./componets/Profile/ProfileContainer";
 
 function App(props) {
   return (
@@ -20,7 +20,7 @@ function App(props) {
         <Navbar />
         <div className="app-wrapper-content">
           <Routes>
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile/*" element={<ProfileContainer />} />
             <Route path="/dialogs" element={<DialogsContainer />} />
             {/* exact - точное совпадение. React Router v6 <Route path="/messages/*" element={<Messages/>} /> */}
             <Route path="/users" element={<UsersContainer />} />
