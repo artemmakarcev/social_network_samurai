@@ -20,7 +20,7 @@ function App(props) {
         <Navbar />
         <div className="app-wrapper-content">
           <Routes>
-            <Route path="/profile/*" element={<ProfileContainer />} />
+            <Route path="/profile/:profileId" element={<ProfileContainer />} />
             <Route path="/dialogs" element={<DialogsContainer />} />
             {/* exact - точное совпадение. React Router v6 <Route path="/messages/*" element={<Messages/>} /> */}
             <Route path="/users" element={<UsersContainer />} />

@@ -6,13 +6,28 @@ const ProfileInfo = (props) => {
   if (!props.profile) {
     return <Preloader></Preloader>;
   }
+
   return (
     <div>
       <div>
-        <img src="https://randomuser.me/api/portraits/men/4.jpg" alt="nav" />
+        <img src={props.profile.photos.large} alt="large"></img>
       </div>
-      <img src={props.profile.photos.large}></img>
-      <div className={styles["descriptionBlock"]}>ava + description</div>
+      <div className={styles.descriptionBlock}>
+        {props.profile.fullName} + {props.profile.aboutMe}
+      </div>
+      <ul>
+        {(() => {
+          const arr = [];
+          for (let contact in props.profile.contacts) {
+            arr.push(
+              <li key={contact}>
+                {contact} : {props.profile.contacts[contact]}
+              </li>
+            );
+          }
+          return arr;
+        })()}
+      </ul>
     </div>
   );
 };
