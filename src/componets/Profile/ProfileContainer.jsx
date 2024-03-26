@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import Profile from "./Profile";
-import { setUserProfile } from "../../redux/profileReducer";
+import { setUserProfile } from "../../reducers/profileReducer";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 // wrapper to use react router's v6 hooks in class component(to use HOC pattern, like in router v5)

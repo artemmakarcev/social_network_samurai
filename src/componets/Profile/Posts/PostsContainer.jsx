@@ -1,14 +1,14 @@
 /* 
 Контейнерная компонента
 */
-import { addPostActionCreator, updateNewPostTextActionCreator } from "../../../redux/profileReducer";
+import { addPostActionCreator, updateNewPostTextActionCreator } from "../../../reducers/profileReducer";
 import Posts from "./Posts";
 import { connect } from "react-redux";
 
 let mapStateToProps = (state) => {
   return {
     posts: state.profilePage.posts,
-    newPostText: state.profilePage.newPostText
+    newPostText: state.profilePage.newPostText,
   };
 };
 

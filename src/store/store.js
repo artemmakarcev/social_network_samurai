@@ -2,9 +2,9 @@
 Используется для примера строения store
 */
 
-import dialogsReducer from "./dialogsReducer";
-import profileReducer from "./profileReducer";
-import sidebarReducer from "./sidebarReducer";
+import dialogsReducer from "../reducers/dialogsReducer";
+import profileReducer from "./reducers/profileReducer";
+import sidebarReducer from "./reducers/sidebarReducer";
 
 let store = {
   _state: {
