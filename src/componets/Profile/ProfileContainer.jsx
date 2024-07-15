@@ -23,13 +23,18 @@ class ProfileContainer extends React.Component {
   }
   componentDidMount() {
     let profileId = this.props.router.params.profileId;
-    if (!profileId) {
-      profileId = 2;
-    }
-    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + profileId).then((response) => {
-      console.log(response.data);
-      this.props.setUserProfile(response.data);
-    });
+    // if (!profileId) {
+    // }
+    profileId = 29435;
+    axios
+      .get(`https://social-network.samuraijs.com/api/1.0/profile/${profileId}`, {
+        withCredentials: true,
+        headers: { "API-KEY": "9ce35fb9-4b2e-4384-b0e6-46701c1199b4" },
+      })
+      .then((response) => {
+        console.log(response.data);
+        this.props.setUserProfile(response.data);
+      });
   }
   render() {
     return <Profile {...this.props} profile={this.props.profile}></Profile>;
