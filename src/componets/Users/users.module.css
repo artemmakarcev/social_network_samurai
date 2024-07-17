@@ -16,3 +16,7 @@
 .userList li a {
   text-decoration: none;
 }
+
+img {
+  width: 128px;
+}
