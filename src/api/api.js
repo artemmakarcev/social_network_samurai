@@ -1,7 +1,6 @@
 import axios from "axios";
 const API_KEY = process.env.REACT_APP_API_KEY;
 const API_URL = process.env.REACT_APP_API_URL;
-
 const instance = axios.create({
   baseURL: API_URL,
   withCredentials: true,
@@ -16,9 +15,11 @@ export const userAPI = {
   },
 };
 
-export const getCurrentUser = async () => {
-  const response = await instance.get(`auth/me`);
-  return response.data;
+export const authAPI = {
+  async getCurrentUser() {
+    const response = await instance.get(`auth/me`);
+    return response.data;
+  },
 };
 
 export const getProfile = async ({ profileId }) => {
@@ -26,12 +27,17 @@ export const getProfile = async ({ profileId }) => {
   return response.data;
 };
 
-export const deleteFollow = async ({ id }) => {
-  const response = await instance.delete(`follow/${id}`);
-  return response.data;
-};
-
-export const setFollow = async ({ id }) => {
-  const response = await instance.post(`follow/${id}`, {});
-  return response.data;
+export const followAPI = {
+  async getFollow({ id }) {
+    const response = await instance.get(`follow/${id}`, {});
+    return response.data;
+  },
+  async setFollow({ id }) {
+    const response = await instance.post(`follow/${id}`, {});
+    return response.data;
+  },
+  async deleteFollow({ id }) {
+    const response = await instance.delete(`follow/${id}`);
+    return response.data;
+  },
 };
