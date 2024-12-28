@@ -6,9 +6,9 @@ const Pagination = ({currentPage, onPageChanged, totalUsersCount, pageSize, port
   const totalEntries = totalUsersCount;
   const totalPage = Math.ceil(totalUsersCount / pageSize);
   const nextPage = currentPage !== totalPage;
-  const perPage = pageSize;
-  const start = currentPage === 1 ? currentPage : currentPage * 10;
-  const end = currentPage === 1 ? currentPage + perPage : currentPage * 10 + perPage > totalEntries ? totalEntries : currentPage * 10 + perPage;
+  // const perPage = pageSize;
+  // const start = currentPage === 1 ? currentPage : currentPage * 10;
+  // const end = currentPage === 1 ? currentPage + perPage : currentPage * 10 + perPage > totalEntries ? totalEntries : currentPage * 10 + perPage;
 
   const PagesLink = () => {
     let pages = [];
