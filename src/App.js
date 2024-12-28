@@ -11,6 +11,7 @@ import DialogsContainer from "./componets/Dialogs/DialogsContainer";
 import UsersContainer from "./componets/Users/UsersContainer";
 import ProfileContainer from "./componets/Profile/ProfileContainer";
 import HeaderContainer from "./componets/Header/HeaderContainer";
+import Login from "./componets/Login/Login";
 
 function App(props) {
   return (
@@ -20,7 +21,7 @@ function App(props) {
         <Navbar />
         <div className="app-wrapper-content">
           <Routes>
-            <Route path="/profile/:profileId" element={<ProfileContainer />} />
+            <Route path="/profile/*" element={<ProfileContainer />} />
             <Route path="/dialogs" element={<DialogsContainer />} />
             {/* exact - точное совпадение. React Router v6 <Route path="/messages/*" element={<Messages/>} /> */}
             <Route path="/users" element={<UsersContainer />} />
@@ -28,6 +29,7 @@ function App(props) {
             <Route path="/music" element={<Music />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/friends" element={<Friends />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </div>
       </div>
