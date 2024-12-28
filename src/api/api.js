@@ -13,31 +13,27 @@ export const userAPI = {
     const response = await instance.get(`users?page=${pageNumber}&count=${pageSize}`);
     return response.data;
   },
+  async getFollow(id) {
+    const response = await instance.get(`follow/${id}`, {});
+    return response.data;
+  },
+  async setFollow(id) {
+    const response = await instance.post(`follow/${id}`, {});
+    return response.data;
+  },
+  async deleteFollow(id) {
+    const response = await instance.delete(`follow/${id}`);
+    return response.data;
+  },
+  async getProfile(id) {
+    const response = await instance.get(`profile/${id}`);
+    return response.data;
+  },
 };
 
 export const authAPI = {
   async getCurrentUser() {
     const response = await instance.get(`auth/me`);
-    return response.data;
-  },
-};
-
-export const getProfile = async ({ profileId }) => {
-  const response = await instance.get(`profile/${profileId}`);
-  return response.data;
-};
-
-export const followAPI = {
-  async getFollow({ id }) {
-    const response = await instance.get(`follow/${id}`, {});
-    return response.data;
-  },
-  async setFollow({ id }) {
-    const response = await instance.post(`follow/${id}`, {});
-    return response.data;
-  },
-  async deleteFollow({ id }) {
-    const response = await instance.delete(`follow/${id}`);
     return response.data;
   },
 };

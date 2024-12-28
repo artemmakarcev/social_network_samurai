@@ -3,17 +3,12 @@ import styles from "./users.module.css";
 import userPhoto from "../../assets/img/avatar.png";
 import { NavLink } from "react-router-dom";
 import Pagination from "../Paggination/Pagination";
-import { followAPI } from "../../api/api";
 
 let Users = (props) => {
   const loadPage = (page) => {
     props.onPageChanged(page);
   };
 
-  // const setPage = (pageNumber) => {
-  //   props.getUsersThunk(pageNumber, props.pageSize);
-  //   props.setCurrentPage(pageNumber);
-  // };
   return (
     <div>
       <Pagination
@@ -38,13 +33,7 @@ let Users = (props) => {
               <button
                 disabled={props.followingInProgress.some((id) => id === user.id)}
                 onClick={() => {
-                  props.toggleFollowingInProgress(true, user.id);
-                  followAPI.deleteFollow({ id: user.id }).then((data) => {
-                    if (data.resultCode === 0) {
-                      props.unfollow(user.id);
-                    }
-                    props.toggleFollowingInProgress(false, user.id);
-                  });
+                  props.unfollow(user.id);
                 }}
               >
                 Unfollow
@@ -53,13 +42,7 @@ let Users = (props) => {
               <button
                 disabled={props.followingInProgress.some((id) => id === user.id)}
                 onClick={() => {
-                  props.toggleFollowingInProgress(true, user.id);
-                  followAPI.setFollow({ id: user.id }).then((data) => {
-                    if (data.resultCode === 0) {
-                      props.follow(user.id);
-                    }
-                    props.toggleFollowingInProgress(false, user.id);
-                  });
+                  props.follow(user.id);
                 }}
               >
                 Follow

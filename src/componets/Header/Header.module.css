@@ -1,17 +1,23 @@
 .header {
-    grid-area: header;
-    background-color: green;
-  }
-  .header img {
-    width: 64px;
-    height: auto;
-    pointer-events: none;
-  }
+  grid-area: header;
+  background-color: #6c63ff;
+}
+.headerWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+.header img {
+  width: 64px;
+  height: auto;
+  pointer-events: none;
+}
 
-  .loginBlock {
-    float: right;
-  }
+.loginBlock {
+  float: right;
+}
 
-  .loginBlock a {
-    color: white;
-  }
+.loginBlock a {
+  color: white;
+}
