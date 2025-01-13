@@ -5,12 +5,7 @@ const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 
 let initialState = {
-  posts: [
-    { id: 1, title: "Post1", src: "https://randomuser.me/api/portraits/men/1.jpg", likesCount: 11 },
-    { id: 2, title: "Post2", src: "https://randomuser.me/api/portraits/men/2.jpg", likesCount: 11 },
-    { id: 3, title: "Post3", src: "https://randomuser.me/api/portraits/men/3.jpg", likesCount: 11 },
-    { id: 4, title: "Post4", src: "https://randomuser.me/api/portraits/men/4.jpg", likesCount: 11 },
-  ],
+  posts: [],
   newPostText: "new post text",
   profile: null,
 };

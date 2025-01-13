@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./ProfileInfo.module.css";
 import Preloader from "../../Common/Preloader/Preloader";
+import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = (props) => {
   if (!props.profile) {
@@ -20,6 +21,7 @@ const ProfileInfo = (props) => {
       </div>
       <div>
         Job status: {props.profile.lookingForAJob ? "active job search" : "not looking a job"} <br />
+        <ProfileStatus status="hello my friends"/>
         Description: {props.profile.lookingForAJobDescription}
       </div>
       <h3>Personal details</h3>

@@ -39,4 +39,4 @@ let mapDispatchToProps = {
   getUserProfile,
 };
 
-export default compose(connect(mapStateToProps, mapDispatchToProps), withRouter, withAuthRedirect)(ProfileContainer);
+export default compose(connect(mapStateToProps, mapDispatchToProps), withRouter)(ProfileContainer);
