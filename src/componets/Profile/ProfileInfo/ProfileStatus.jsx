@@ -1,6 +1,5 @@
 import React from "react";
 
-let newStatusElement = React.createRef();
 class ProfileStatus extends React.Component {
   state = {
     status: this.props.status,
@@ -17,11 +16,13 @@ class ProfileStatus extends React.Component {
     this.setState({
       editMode: false,
     });
+    this.props.updateStatus(this.state.status);
   };
 
-  updateStatusText = () => {
-    let text = newStatusElement.current.value;
-    this.status = text;
+  updateStatusText = (event) => {
+    this.setState({
+      status: event.currentTarget.value,
+    });
   };
 
   render() {
@@ -29,19 +30,12 @@ class ProfileStatus extends React.Component {
       <div>
         {!this.state.editMode && (
           <div>
-            <span onDoubleClick={this.onEditMode}>Status: {this.status || this.props.status}</span>
+            <span onDoubleClick={this.onEditMode}>Status: {this.state.status || "No status"}</span>
           </div>
         )}
         {this.state.editMode && (
           <div>
-            <input
-              autoFocus
-              ref={newStatusElement}
-              onChange={this.updateStatusText}
-              onBlur={this.offEditMode}
-              type="text"
-              value={this.status || this.props.status}
-            />
+            <input autoFocus onChange={this.updateStatusText} onBlur={this.offEditMode} type="text" value={this.state.status} />
           </div>
         )}
       </div>

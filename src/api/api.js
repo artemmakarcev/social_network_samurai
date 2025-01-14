@@ -13,20 +13,35 @@ export const userAPI = {
     const response = await instance.get(`users?page=${pageNumber}&count=${pageSize}`);
     return response.data;
   },
-  async getFollow(id) {
-    const response = await instance.get(`follow/${id}`, {});
+  async getFollow(userId) {
+    const response = await instance.get(`follow/${userId}`, {});
     return response.data;
   },
-  async setFollow(id) {
-    const response = await instance.post(`follow/${id}`, {});
+  async setFollow(userId) {
+    const response = await instance.post(`follow/${userId}`, { userId });
     return response.data;
   },
-  async deleteFollow(id) {
-    const response = await instance.delete(`follow/${id}`);
+  async deleteFollow(userId) {
+    const response = await instance.delete(`follow/${userId}`);
     return response.data;
   },
-  async getProfile(id) {
-    const response = await instance.get(`profile/${id}`);
+  async getProfile(userId) {
+    console.warn("Obsolete method. Plese use profileAPI object.");
+    return profileAPI.getProfile(userId);
+  },
+};
+
+export const profileAPI = {
+  async getProfile(userId) {
+    const response = await instance.get(`profile/${userId}`);
+    return response.data;
+  },
+  async getStatus(userId) {
+    const response = await instance.get(`profile/status/${userId}`);
+    return response.data;
+  },
+  async updateStatus(status) {
+    const response = await instance.put(`profile/status`, { status });
     return response.data;
   },
 };
