@@ -47,8 +47,18 @@ export const profileAPI = {
 };
 
 export const authAPI = {
-  async getCurrentUser() {
+  async getAuth() {
     const response = await instance.get(`auth/me`);
+    return response.data;
+  },
+
+  async getLogin(email, password, rememberMe = false , captcha = null) {
+    const response = await instance.post("auth/login", { email, password, rememberMe });
+    return response.data;
+  },
+
+  async deleteLogin() {
+    const response = await instance.delete("auth/login");
     return response.data;
   },
 };
