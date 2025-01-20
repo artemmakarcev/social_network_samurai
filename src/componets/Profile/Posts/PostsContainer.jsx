@@ -1,7 +1,7 @@
 /* 
 Контейнерная компонента
 */
-import { addPostActionCreator, updateNewPostTextActionCreator } from "../../../reducers/profileReducer";
+import { addPostActionCreator } from "../../../reducers/profileReducer";
 import Posts from "./Posts";
 import { connect } from "react-redux";
 
@@ -14,12 +14,8 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
   return {
-    addPost: () => {
-      dispatch(addPostActionCreator());
-    },
-    updateNewPostText: (text) => {
-      let action = updateNewPostTextActionCreator(text);
-      dispatch(action);
+    addPost: (newPostText) => {
+      dispatch(addPostActionCreator(newPostText));
     },
   };
 };

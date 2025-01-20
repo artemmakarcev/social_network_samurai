@@ -1,13 +1,11 @@
 import { profileAPI } from "../api/api";
 
 const ADD_POST = "ADD-POST";
-const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_STATUS = "SET_STATUS";
 
 let initialState = {
   posts: [],
-  newPostText: "new post text",
   profile: null,
   status: "",
 };
@@ -16,16 +14,11 @@ const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_POST:
       let nextId = state.posts.length + 1;
+      let text = action.newPostText;
       return {
         ...state,
-        newPostText: "",
-        posts: [
-          ...state.posts,
-          { id: nextId, title: state.newPostText, likesCount: 4, src: "https://randomuser.me/api/portraits/men/" + nextId + ".jpg" },
-        ],
+        posts: [...state.posts, { id: nextId, title: text, likesCount: 4, src: "https://randomuser.me/api/portraits/men/" + nextId + ".jpg" }],
       };
-    case UPDATE_NEW_POST_TEXT:
-      return { ...state, newPostText: action.newText };
     case SET_USER_PROFILE:
       return { ...state, profile: action.profile };
     case SET_STATUS:
@@ -37,12 +30,8 @@ const profileReducer = (state = initialState, action) => {
       return state;
   }
 };
-export const addPostActionCreator = () => {
-  return { type: ADD_POST };
-};
-
-export const updateNewPostTextActionCreator = (text) => {
-  return { type: UPDATE_NEW_POST_TEXT, newText: text };
+export const addPostActionCreator = (newPostText) => {
+  return { type: ADD_POST, newPostText };
 };
 
 export const setUserProfile = (profile) => ({
