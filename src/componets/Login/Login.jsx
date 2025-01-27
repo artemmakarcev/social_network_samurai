@@ -12,7 +12,7 @@ const LoginReduxForm = reduxForm({
 const Login = (props) => {
   const onSubmit = (formData) => {
     console.log(formData);
-    login(formData.login, formData.password, formData.rememberMe);
+    props.login(formData.email, formData.password, formData.rememberMe);
   };
   if (props.isAuth) return <Navigate to={"/profile"} />;
 
@@ -24,8 +24,8 @@ const Login = (props) => {
   );
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return { isAuth: state.auth.isAuth };
-}
+};
 
 export default connect(mapStateToProps, { login })(Login);

@@ -7,8 +7,8 @@ const LoginForm = (props) => {
   return (
     <form onSubmit={props.handleSubmit}>
       <div>
-        <label htmlFor="login">Login:</label>
-        <Field id="login" placeholder="Login" component={Input} name="login" type={"text"} autoComplete="username" validate={[requiredField]} />
+        <label htmlFor="email">Email:</label>
+        <Field id="email" placeholder="email" component={Input} name="email" type={"text"} autoComplete="username" validate={[requiredField]} />
       </div>
       <div>
         <label htmlFor="password">Password:</label>
@@ -23,7 +23,7 @@ const LoginForm = (props) => {
         />
       </div>
       <div>
-        <Field id="rememberMe" component={Input} name={"rememberMe"} type={"checkbox"}/>
+        <Field id="rememberMe" component={Input} name={"rememberMe"} type={"checkbox"} />
         <label htmlFor="rememberMe">remember me</label>
       </div>
       <button type="submit">Login</button>

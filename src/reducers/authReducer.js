@@ -13,13 +13,13 @@ let initialState = {
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_USER_DATA:
-      return { ...state, ...action.data };
+      return { ...state, ...action.pyaload };
     default:
       return state;
   }
 };
 
-export const setAuthUserData = (userId, email, login, isAuth) => ({ type: SET_USER_DATA, data: { userId, email, login, isAuth } });
+export const setAuthUserData = (userId, email, login, isAuth) => ({ type: SET_USER_DATA, pyaload: { userId, email, login, isAuth } });
 
 export const getAuthUserData = () => (dispatch) => {
   authAPI.getAuth().then((data) => {
