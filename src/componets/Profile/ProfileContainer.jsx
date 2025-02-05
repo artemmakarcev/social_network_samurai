@@ -22,7 +22,7 @@ class ProfileContainer extends React.Component {
   componentDidMount() {
     let profileId = this.props.router.params.userId;
     if (!profileId) {
-      profileId = 29435;
+      profileId = this.props.authorizedUserId;
     }
     this.props.getUserProfile(profileId);
     this.props.getStatus(profileId);
@@ -35,6 +35,8 @@ class ProfileContainer extends React.Component {
 let mapStateToProps = (state) => ({
   profile: state.profilePage.profile,
   status: state.profilePage.status,
+  authorizedUserId: state.auth.userId,
+  isAuth: state.auth.isAuth,
 });
 
 let mapDispatchToProps = {
