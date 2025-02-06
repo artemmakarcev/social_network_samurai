@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import Profile from "./Profile";
 import { getStatus, getUserProfile, updateStatus } from "../../reducers/profileReducer";
@@ -12,9 +12,15 @@ function withRouter(Component) {
     let location = useLocation();
     let navigate = useNavigate();
     let params = useParams();
+
+    useEffect(() => {
+      if (!props.isAuth) {
+        navigate("/login");
+      }
+    }, [props.isAuth, navigate]);
+
     return <Component {...props} router={{ location, navigate, params }} />;
   }
-
   return ComponentWithRouterProp;
 }
 
@@ -23,6 +29,9 @@ class ProfileContainer extends React.Component {
     let profileId = this.props.router.params.userId;
     if (!profileId) {
       profileId = this.props.authorizedUserId;
+      if (!profileId) {
+        this.props.history.push("/login");
+      }
     }
     this.props.getUserProfile(profileId);
     this.props.getStatus(profileId);

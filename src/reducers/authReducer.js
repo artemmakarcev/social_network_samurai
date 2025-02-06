@@ -22,7 +22,7 @@ const authReducer = (state = initialState, action) => {
 export const setAuthUserData = (userId, email, login, isAuth) => ({ type: SET_USER_DATA, pyaload: { userId, email, login, isAuth } });
 
 export const getAuthUserData = () => (dispatch) => {
-  authAPI.getAuth().then((data) => {
+  return authAPI.getAuth().then((data) => {
     if (data.resultCode === 0) {
       let { id, email, login } = data.data;
       dispatch(setAuthUserData(id, email, login, true));
@@ -35,8 +35,8 @@ export const login = (email, password, rememberMe) => (dispatch) => {
     if (data.resultCode === 0) {
       dispatch(getAuthUserData());
     } else {
-      let message = data.messages.length > 0 ? data.messages[0] : "Some error"
-      dispatch(stopSubmit("login", {_error: message}));
+      let message = data.messages.length > 0 ? data.messages[0] : "Some error";
+      dispatch(stopSubmit("login", { _error: message }));
     }
   });
 };
