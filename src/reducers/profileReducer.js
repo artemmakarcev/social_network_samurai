@@ -1,6 +1,7 @@
 import { profileAPI } from "../api/api";
 
 const ADD_POST = "ADD-POST";
+const DELETE_POST = "DELETE-POST";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_STATUS = "SET_STATUS";
 
@@ -19,6 +20,11 @@ const profileReducer = (state = initialState, action) => {
         ...state,
         posts: [...state.posts, { id: nextId, title: text, likesCount: 4, src: "https://randomuser.me/api/portraits/men/" + nextId + ".jpg" }],
       };
+    case DELETE_POST:
+      return {
+        ...state,
+        posts: state.posts.filter((post) => post.id !== action.postId),
+      };
     case SET_USER_PROFILE:
       return { ...state, profile: action.profile };
     case SET_STATUS:
@@ -32,6 +38,10 @@ const profileReducer = (state = initialState, action) => {
 };
 export const addPostActionCreator = (newPostText) => {
   return { type: ADD_POST, newPostText };
+};
+
+export const deletePostActionCreator = (postId) => {
+  return { type: DELETE_POST, postId };
 };
 
 export const setUserProfile = (profile) => ({
