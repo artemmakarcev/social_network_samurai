@@ -5,6 +5,7 @@ import { getStatus, getUserProfile, updateStatus } from "../../reducers/profileR
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { compose } from "redux";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+import { getIsAuth, getProfilePage, getStatusPage, getUserId } from "../../Selectors/profileSelectors";
 
 // wrapper to use react router's v6 hooks in class component(to use HOC pattern, like in router v5)
 function withRouter(Component) {
@@ -41,14 +42,14 @@ class ProfileContainer extends React.Component {
   }
 }
 
-let mapStateToProps = (state) => ({
-  profile: state.profilePage.profile,
-  status: state.profilePage.status,
-  authorizedUserId: state.auth.userId,
-  isAuth: state.auth.isAuth,
+const mapStateToProps = (state) => ({
+  profile: getProfilePage(state),
+  status: getStatusPage(state),
+  authorizedUserId: getUserId(state),
+  isAuth: getIsAuth(state),
 });
 
-let mapDispatchToProps = {
+const mapDispatchToProps = {
   getUserProfile,
   getStatus,
   updateStatus,
