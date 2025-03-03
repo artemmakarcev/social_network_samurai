@@ -1,6 +1,6 @@
 import axios from "axios";
-const API_KEY = process.env.REACT_APP_API_KEY;
-const API_URL = process.env.REACT_APP_API_URL;
+const API_KEY = import.meta.env.VITE_API_KEY;
+const API_URL = import.meta.env.VITE_API_URL;
 const instance = axios.create({
   baseURL: API_URL,
   withCredentials: true,
@@ -9,8 +9,8 @@ const instance = axios.create({
 
 // Можно объединять в группу схожие функции для наглядности
 export const userAPI = {
-  async getUsers({ pageNumber = 1, pageSize = 10 }) {
-    const response = await instance.get(`users?page=${pageNumber}&count=${pageSize}`);
+  async getUsers({ pageNumber = 1, usersShowLimit = 10 }) {
+    const response = await instance.get(`users?page=${pageNumber}&count=${usersShowLimit}`);
     return response.data;
   },
   async getFollow(userId) {
@@ -26,7 +26,7 @@ export const userAPI = {
     return response.data;
   },
   async getProfile(userId) {
-    console.warn("Obsolete method. Plese use profileAPI object.");
+    console.warn("Obsolete method. Please use profileAPI object.");
     return profileAPI.getProfile(userId);
   },
 };
@@ -52,7 +52,7 @@ export const authAPI = {
     return response.data;
   },
 
-  async getLogin(email, password, rememberMe = false , captcha = null) {
+  async getLogin(email, password, rememberMe = false, captcha = null) {
     const response = await instance.post("auth/login", { email, password, rememberMe });
     return response.data;
   },
