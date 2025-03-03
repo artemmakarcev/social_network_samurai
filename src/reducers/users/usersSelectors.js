@@ -1,0 +1,29 @@
+import { createSelector } from "reselect";
+
+const getUsers = (state) => {
+  return state.usersPage.users;
+};
+
+export const getUsersReselect = createSelector(getUsers, (users) => {
+  return users.filter((user) => true);
+});
+
+export const getShowUsersLimit = (state) => {
+  return state.usersPage.showUsersLimit;
+};
+
+export const getTotalUsersCount = (state) => {
+  return state.usersPage.totalUsersCount;
+};
+
+export const getCurrentPage = (state) => {
+  return state.usersPage.currentPage;
+};
+
+export const getIsFetching = (state) => {
+  return state.usersPage.isFetching;
+};
+
+export const getFollowingInProgress = (state) => {
+  return state.usersPage.followingInProgress;
+};
