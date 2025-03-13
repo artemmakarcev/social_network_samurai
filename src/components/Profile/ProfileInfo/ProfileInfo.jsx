@@ -18,7 +18,7 @@ const ProfileInfo = ({ profile, status, updateStatus }) => {
       <div className={styles.descriptionBlock}>{profile.aboutMe}</div>
       <div>
         Job status: {profile.lookingForAJob ? "active job search" : "not looking a job"} <br />
-        <ProfileStatus status={status} updateStatus={updateStatus} />
+        <ProfileStatus initialStatus={status} updateStatus={updateStatus} />
         Description: {profile.lookingForAJobDescription}
       </div>
       <h3>Personal details</h3>
