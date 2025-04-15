@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { connect } from "react-redux";
 import Profile from "./Profile";
 import { getStatus, getUserProfile, updateStatus } from "../../reducers/profile/profileReducer";

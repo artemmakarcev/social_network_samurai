@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const ProfileStatus = ({ initialStatus, updateStatus }) => {
   const [status, setStatus] = useState(initialStatus);
@@ -19,11 +19,17 @@ const ProfileStatus = ({ initialStatus, updateStatus }) => {
     setStatus(event.currentTarget.value);
   };
   return (
-    <div>
-      <p className="status" onDoubleClick={onEditMode}>
-        Status:
-        {!editMode ? <span>{status}</span> : <input autoFocus onChange={updateStatusText} onBlur={offEditMode} type="text" value={status} />}
-      </p>
+    <div className="status">
+      {!editMode && (
+        <div>
+          <span onDoubleClick={onEditMode}>{status || "status empty"}</span>
+        </div>
+      )}
+      {editMode && (
+        <div>
+          <input onChange={updateStatusText} autoFocus={true} onBlur={offEditMode} value={status} />
+        </div>
+      )}
     </div>
   );
 };
