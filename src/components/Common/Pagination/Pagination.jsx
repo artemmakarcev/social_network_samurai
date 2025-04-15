@@ -1,106 +1,57 @@
 import styles from "./Pagination.module.css";
-import { NavLink } from "react-router-dom";
 
-const Pagination = ({ currentPage, onPageChanged, totalUsersCount, showUsersLimit }) => {
-  const totalEntries = totalUsersCount;
-  const totalPage = Math.ceil(totalUsersCount / showUsersLimit);
-  const nextPage = currentPage !== totalPage;
-  const perPage = 10;
-  const start = currentPage === 1 ? currentPage : currentPage * 10;
-  const end = currentPage === 1 ? currentPage + perPage : currentPage * 10 + perPage > totalEntries ? totalEntries : currentPage * 10 + perPage;
+const Pagination = ({ totalItemsCount, pageSize, currentPage, onPageChanged, portionSize = 10 }) => {
+  const totalPages = Math.ceil(totalItemsCount / pageSize);
 
-  const PagesLink = () => {
-    const goToNextPage = () => {
-      if (currentPage !== totalPage) onPageChanged(currentPage + 1);
-    };
+  const startPage = Math.max(1, Math.floor(currentPage - portionSize / 2 || 1));
+  const endPage = Math.min(totalPages, startPage + portionSize - 1);
 
-    const goToPrevPage = () => {
-      if (currentPage !== 1) onPageChanged(currentPage - 1);
-    };
+  const handlePageClick = (pageNumber) => {
+    onPageChanged(pageNumber);
+  };
 
-    let pages = [];
-    pages.push(
-      <li
-        key={"first"}
-        onClick={() => onPageChanged(1)}
-        className={currentPage === 1 ? "paginate_button page-item previous disabled" : "paginate_button page-item previous"}
-      >
-        <NavLink to="#" className="page-link">
-          {"<<"}First
-        </NavLink>
-      </li>
-    );
-    pages.push(
-      <li
-        key={"prev"}
-        onClick={() => goToPrevPage(totalPage)}
-        className={nextPage ? "paginate_button page-item next" : "paginate_button page-item next disabled"}
-      >
-        <NavLink to="#" className="page-link">
-          Prev
-        </NavLink>
-      </li>
-    );
-    let previousLinks = currentPage - 4;
-    for (let i = previousLinks; i <= currentPage; i++) {
-      if (i < currentPage && i > 0) {
-        pages.push(
-          <li key={i} onClick={() => onPageChanged(i)} className={currentPage === i ? styles.selectedPage : "paginate_button page-item"}>
-            <NavLink to="#" className="page-link">
-              {i}
-            </NavLink>
-          </li>
-        );
-      }
-    }
+  const handleFirstPageClick = () => {
+    handlePageClick(1);
+  };
 
-    let nextLinks = currentPage < totalPage ? currentPage + 4 : currentPage;
-    for (let i = currentPage; i <= nextLinks; i++) {
-      if (i <= totalPage) {
-        pages.push(
-          <li key={i} onClick={() => onPageChanged(i)} className={currentPage === i ? styles.selectedPage : "paginate_button page-item"}>
-            <NavLink to="#" className="page-link">
-              {i}
-            </NavLink>
-          </li>
-        );
-      }
-    }
-    pages.push(
-      <li
-        key={"next"}
-        onClick={() => goToNextPage(totalPage)}
-        className={nextPage ? "paginate_button page-item next" : "paginate_button page-item next disabled"}
-      >
-        <NavLink to="#" className="page-link">
-          Next
-        </NavLink>
-      </li>
-    );
-    pages.push(
-      <li
-        key={"last"}
-        onClick={() => onPageChanged(totalPage)}
-        className={nextPage ? "paginate_button page-item next" : "paginate_button page-item next disabled"}
-      >
-        <NavLink to="#" className="page-link">
-          Last{">>"}
-        </NavLink>
-      </li>
-    );
-    return pages;
+  const handlePreviousPageClick = () => {
+    handlePageClick(currentPage - 1);
+  };
+
+  const handleNextPageClick = () => {
+    handlePageClick(currentPage + 1);
+  };
+
+  const handleLastPageClick = () => {
+    handlePageClick(totalPages);
   };
 
   return (
-    <>
-      {totalEntries > 0 && (
-        <nav>
-          <ul className={styles.pagination}>
-            <PagesLink />
-          </ul>
-        </nav>
-      )}
-    </>
+    <nav className={styles.pagination}>
+      <button className={styles.btn} onClick={handleFirstPageClick} disabled={currentPage === 1}>
+        {"<<"} First
+      </button>
+      <button className={styles.btn} onClick={handlePreviousPageClick} disabled={currentPage === 1}>
+        {"<"} Prev
+      </button>
+
+      {Array.from({ length: endPage - startPage + 1 }, (_, index) => (
+        <button
+          className={[styles.btn, currentPage === startPage + index ? styles.active : ""].join(" ")}
+          key={index}
+          onClick={() => handlePageClick(startPage + index)}
+        >
+          {startPage + index}
+        </button>
+      ))}
+
+      <button className={styles.btn} onClick={handleNextPageClick} disabled={currentPage === totalPages}>
+        Next {">"}
+      </button>
+      <button className={styles.btn} onClick={handleLastPageClick} disabled={currentPage === totalPages}>
+        Last {">>"}
+      </button>
+    </nav>
   );
 };
 

@@ -41,7 +41,7 @@ const UsersContainer = ({
 
   return (
     <>
-      <Pagination currentPage={currentPage} onPageChanged={onPageChanged} totalUsersCount={totalUsersCount} showUsersLimit={showUsersLimit} />
+      <Pagination currentPage={currentPage} onPageChanged={onPageChanged} totalItemsCount={totalUsersCount} pageSize={showUsersLimit} />
       <Users users={users} follow={setFollow} unfollow={deleteFollow} followingInProgress={followingInProgress} />
     </>
   );
