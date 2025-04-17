@@ -1,4 +1,3 @@
-import React from "react";
 import { reduxForm } from "redux-form";
 import { login } from "../../reducers/auth/authReducer";
 import { Navigate } from "react-router-dom";
