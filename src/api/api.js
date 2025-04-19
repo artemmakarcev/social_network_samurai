@@ -49,7 +49,11 @@ export const profileAPI = {
     formData.append("image", photoFile);
     const response = await instance.put(`profile/photo`, formData);
     return response.data
-  }
+  },
+  async saveProfileData(profileData) {
+    const response = await instance.put(`profile`, profileData);
+    return response.data
+  },
 };
 
 export const authAPI = {

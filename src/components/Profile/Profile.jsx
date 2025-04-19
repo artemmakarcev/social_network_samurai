@@ -3,10 +3,17 @@ import React from "react";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import PostsContainer from "./Posts/PostsContainer";
 
-const Profile = ({ profile, status, updateStatus, isOwner, savePhoto }) => {
+const Profile = ({ profileData, status, updateStatus, isOwner, savePhoto, saveProfileData }) => {
   return (
     <div className="container">
-      <ProfileInfo profile={profile} status={status} updateStatus={updateStatus} isOwner={isOwner} savePhoto={savePhoto} />
+      <ProfileInfo
+        profileData={profileData}
+        status={status}
+        updateStatus={updateStatus}
+        isOwner={isOwner}
+        savePhoto={savePhoto}
+        saveProfileData={saveProfileData}
+      />
       <PostsContainer />
     </div>
   );

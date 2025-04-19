@@ -9,7 +9,7 @@ const Posts = ({ addPost, posts }) => {
     addPost(values.newPostText);
   };
 
-  let postsElements = posts.map(({ id, title, src, likesCount }) => {
+  let postsElements = [...posts].reverse().map(({ id, title, src, likesCount }) => {
     return <Post key={id} title={title} src={src} likesCount={likesCount} />;
   });
 

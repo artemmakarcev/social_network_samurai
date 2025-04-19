@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const ProfileStatus = ({ initialStatus, updateStatus }) => {
+const ProfileStatus = ({ initialStatus, updateStatus, isOwner }) => {
   const [status, setStatus] = useState(initialStatus);
   const [editMode, setEditMode] = useState(false);
 
@@ -9,6 +9,7 @@ const ProfileStatus = ({ initialStatus, updateStatus }) => {
   }, [initialStatus]);
 
   const onEditMode = () => {
+    if (!isOwner) return;
     setEditMode(true);
   };
   const offEditMode = () => {
@@ -19,18 +20,10 @@ const ProfileStatus = ({ initialStatus, updateStatus }) => {
     setStatus(event.currentTarget.value);
   };
   return (
-    <div className="status">
-      {!editMode && (
-        <div>
-          <span onDoubleClick={onEditMode}>{status || "status empty"}</span>
-        </div>
-      )}
-      {editMode && (
-        <div>
-          <input onChange={updateStatusText} autoFocus={true} onBlur={offEditMode} value={status} />
-        </div>
-      )}
-    </div>
+    <span className="status">
+      {!editMode && <span onDoubleClick={onEditMode}>{status || "status empty"}</span>}
+      {editMode && <input onChange={updateStatusText} autoFocus={true} onBlur={offEditMode} value={status} />}
+    </span>
   );
 };
 

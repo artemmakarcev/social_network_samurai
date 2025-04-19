@@ -1,5 +1,5 @@
 export const getProfilePage = (state) => {
-  return state.profilePage.profile;
+  return state.profilePage.profileData;
 };
 
 export const getStatusPage = (state) => {
