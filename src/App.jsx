@@ -39,8 +39,8 @@ const App = (props) => {
       <div className="app-wrapper-content">
         <Routes>
           <Route path="/" element={<Navigate replace to="/profile" />} />
-          <Route path="profile" element={ProfileContainer} />
-          <Route path="profile/:userId" element={ProfileContainer} />
+          <Route path="profile" element={<ProfileContainer />} />
+          <Route path="profile/:userId" element={<ProfileContainer />} />
           <Route path="dialogs" element={withSuspense(DialogsContainer)()} />
           <Route path="users" element={<UsersContainer />} />
           <Route path="news" element={withSuspense(News)()} />
