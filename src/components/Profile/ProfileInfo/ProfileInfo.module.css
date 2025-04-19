@@ -6,3 +6,7 @@
   list-style: none;
   padding: 10px;
 }
+
+.mainPhoto {
+  max-width: 128px;
+}
