@@ -9,8 +9,8 @@ const instance = axios.create({
 
 // Можно объединять в группу схожие функции для наглядности
 export const userAPI = {
-  async getUsers({ pageNumber = 1, usersShowLimit = 10 }) {
-    const response = await instance.get(`users?page=${pageNumber}&count=${usersShowLimit}`);
+  async getUsers({ pageNumber = 1, showUsersLimit = 10 }) {
+    const response = await instance.get(`users?page=${pageNumber}&count=${showUsersLimit}`);
     return response.data;
   },
   async getFollow(userId) {
