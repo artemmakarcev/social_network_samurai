@@ -33,9 +33,8 @@ RUN chown -R nginx:nginx /usr/share/nginx/html \
     && chown -R nginx:nginx /var/log/nginx \
     && chmod 644 /etc/nginx/conf.d/default.conf
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-  CMD wget -qO http://localhost/ > /dev/null || exit 1
+# Note: Healthcheck is managed by Coolify - do not define HEALTHCHECK in Dockerfile
+# when using Docker-based deployment on Coolify
 
 EXPOSE 80
 
