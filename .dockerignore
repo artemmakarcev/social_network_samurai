@@ -1,5 +1,4 @@
 node_modules
-bun.lock
 dist
 .git
 .gitignore
@@ -13,3 +12,5 @@ coverage
 *.log
 .env
 .env.production
+.env.development
+.env.test
