@@ -1,0 +1,15 @@
+node_modules
+bun.lock
+dist
+.git
+.gitignore
+.vscode
+.idea
+*.md
+.env.local
+.env.*.local
+coverage
+.DS_Store
+*.log
+.env
+.env.production
